@@ -49,19 +49,38 @@ $hotels = [
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- / BOOTSTRAP -->
-    <title>PHP H0TEL</title>
+    <title>PHP HOTEL</title>
 </head>
 
-<body>
-    <?php
-    foreach ($hotels as  $hotel) {
-        foreach ($hotel as $key => $value) {
-            echo "$key: $value";
-            echo "<br>";
-        }
-        echo "<hr>";
-    }
-    ?>
+<body class="bg-black text-light">
+    <div class="container-fluid ">
+        <h2 class="text-center text-uppercase p-4">Scegli il tuo hotel</h2>
+        <table class=" table table-dark text-center">
+            <thead>
+                <tr class="text-uppercase">
+                    <th scope="col">#</th>
+                    <?php
+                    // ciclo per trovare le chiavi per la colonna
+                    foreach (array_keys($hotels[0]) as $key) {
+                        echo "<th scope='col'>$key</th>";
+                    }
+                    ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // cicli per trovare l indice e i valori delle righe
+                foreach ($hotels as $index => $hotel) {
+                    echo " <tr><th scope='row'>$index</th>";
+                    foreach ($hotel as $value) {
+                        echo "<td>$value</td>";
+                    }
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>
